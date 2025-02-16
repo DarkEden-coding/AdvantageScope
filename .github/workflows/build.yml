@@ -29,8 +29,10 @@ jobs:
         run: npm ci
         env:
           ASCOPE_NO_FFMPEG: true
-      - name: Check formatting
-        run: npm run check-format
+      - name: Fix and check formatting
+        run: |
+          npm run format
+          npm run check-format
       - name: Compile WebAssembly
         run: mkdir bundles; npm run wasm:compile
       - name: Compile bundles (FRC 6328)
